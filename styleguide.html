@@ -1,0 +1,2979 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zitrone</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --color-primary-900: #00292a;
+        --color-primary-700: #063434;
+        --color-primary-600: #0c5068;
+        --color-accent-teal-500: #04998b;
+        --color-accent-lime-500: #e4f36b;
+        --color-accent-lime-600: #93b61f;
+        --color-accent-lime-400: #dee883;
+        --color-accent-mint-300: #a5eede;
+        --color-neutral-100: #fbf6f3;
+        --color-neutral-200: #f2f1f1;
+        --color-neutral-300: #e8e6d6;
+        --color-neutral-400: #d2dada;
+        --color-text-600: #6e909c;
+        --color-text-500: #57747e;
+        --color-text-400: #547f8e;
+        --color-text-300: #aca9a9;
+        --color-border-500: #848484;
+        --color-white: #ffffff;
+
+        --space-1: 8px;
+        --space-2: 16px;
+        --space-3: 24px;
+        --space-4: 32px;
+        --space-5: 40px;
+        --space-6: 48px;
+        --space-7: 56px;
+        --space-8: 64px;
+        --space-9: 72px;
+        --space-0-5: 4px;
+
+        --radius-xs: 4px;
+        --radius-sm: 8px;
+        --radius-md: 16px;
+        --radius-lg: 24px;
+        --radius-pill: 9999px;
+
+        --font-sans: "Manrope", system-ui, sans-serif;
+        --font-display: "Manrope", system-ui, sans-serif;
+
+        --doc-bg: #f7f6f1;
+        --doc-surface: #ffffff;
+        --doc-surface-muted: #f1f2ef;
+        --doc-border: rgba(0, 41, 42, 0.12);
+        --doc-text: #0d2a2c;
+        --doc-text-muted: #4e6a73;
+        --doc-code-bg: #eef0ed;
+        --doc-code-border: rgba(0, 41, 42, 0.1);
+        --doc-highlight: #e4f36b;
+
+        --shadow-soft: 0 18px 45px rgba(0, 41, 42, 0.12);
+        --shadow-mid: 0 12px 30px rgba(0, 41, 42, 0.18);
+        --shadow-inset: inset 0 0 0 1px rgba(0, 41, 42, 0.08);
+        --shadow-01: 0 2px 6px rgba(0, 41, 42, 0.12);
+        --shadow-02: 0 8px 20px rgba(0, 41, 42, 0.16);
+        --shadow-03: 0 18px 45px rgba(0, 41, 42, 0.18);
+        --shadow-04: 0 28px 80px rgba(0, 41, 42, 0.2);
+
+        --motion-fast: 140ms;
+        --motion-slow: 420ms;
+
+        --opacity-90: 0.9;
+        --opacity-70: 0.7;
+        --opacity-50: 0.5;
+        --opacity-30: 0.3;
+        --opacity-15: 0.15;
+
+        --border-1: 1px;
+        --border-2: 2px;
+        --border-3: 3px;
+
+        --z-base: 0;
+        --z-header: 10;
+        --z-dropdown: 20;
+        --z-overlay: 40;
+        --z-modal: 60;
+        --z-toast: 80;
+        --z-tooltip: 100;
+
+        --type-display-lg-size: 72px;
+        --type-display-lg-line: 1;
+        --type-display-lg-letter: -2.16px;
+        --type-display-lg-weight: 300;
+
+        --type-display-md-size: 70px;
+        --type-display-md-line: 1;
+        --type-display-md-letter: -2.1px;
+        --type-display-md-weight: 300;
+
+        --type-heading-lg-size: 36px;
+        --type-heading-lg-line: 1.5;
+        --type-heading-lg-letter: -1.08px;
+        --type-heading-lg-weight: 300;
+
+        --type-heading-md-size: 32px;
+        --type-heading-md-line: 1.5;
+        --type-heading-md-letter: -0.96px;
+        --type-heading-md-weight: 300;
+
+        --type-heading-sm-size: 24px;
+        --type-heading-sm-line: 1.5;
+        --type-heading-sm-letter: -0.72px;
+        --type-heading-sm-weight: 300;
+
+        --type-body-lg-size: 20px;
+        --type-body-lg-line: 1.6;
+        --type-body-lg-letter: 0;
+        --type-body-lg-weight: 300;
+
+        --type-body-md-size: 19px;
+        --type-body-md-line: 1.6;
+        --type-body-md-letter: 0;
+        --type-body-md-weight: 300;
+
+        --type-body-sm-size: 14px;
+        --type-body-sm-line: 1.6;
+        --type-body-sm-letter: 0;
+        --type-body-sm-weight: 300;
+
+        --type-caption-size: 14px;
+        --type-caption-line: 1.6;
+        --type-caption-letter: 0;
+        --type-caption-weight: 300;
+
+        --type-footer-size: 20px;
+        --type-footer-line: 1.5;
+        --type-footer-letter: -0.4px;
+        --type-footer-weight: 300;
+
+        --type-display-01-size: 72px;
+        --type-display-01-line: 72px;
+        --type-display-01-weight: 300;
+        --type-display-02-size: 70px;
+        --type-display-02-line: 70px;
+        --type-display-02-weight: 300;
+        --type-display-03-size: 48px;
+        --type-display-03-line: 64px;
+        --type-display-03-weight: 300;
+
+        --type-heading-01-size: 36px;
+        --type-heading-01-line: 54px;
+        --type-heading-01-weight: 300;
+        --type-heading-02-size: 32px;
+        --type-heading-02-line: 48px;
+        --type-heading-02-weight: 300;
+        --type-heading-03-size: 24px;
+        --type-heading-03-line: 36px;
+        --type-heading-03-weight: 300;
+        --type-heading-04-size: 20px;
+        --type-heading-04-line: 32px;
+        --type-heading-04-weight: 300;
+        --type-heading-05-size: 16px;
+        --type-heading-05-line: 24px;
+        --type-heading-05-weight: 300;
+        --type-heading-06-size: 14px;
+        --type-heading-06-line: 20px;
+        --type-heading-06-weight: 300;
+
+        --type-body-01-size: 20px;
+        --type-body-01-line: 32px;
+        --type-body-01-weight: 300;
+        --type-body-02-size: 19px;
+        --type-body-02-line: 30px;
+        --type-body-02-weight: 300;
+        --type-body-03-size: 14px;
+        --type-body-03-line: 22px;
+        --type-body-03-weight: 300;
+
+        --type-ui-01-size: 24px;
+        --type-ui-01-line: 36px;
+        --type-ui-01-weight: 300;
+        --type-caption-01-size: 14px;
+        --type-caption-01-line: 22px;
+        --type-caption-01-weight: 300;
+        --type-code-01-size: 14px;
+        --type-code-01-line: 22px;
+        --type-code-01-weight: 300;
+        --type-code-02-size: 12px;
+        --type-code-02-line: 18px;
+        --type-code-02-weight: 300;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: radial-gradient(
+            circle at 20% 10%,
+            rgba(164, 238, 222, 0.35),
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 0%,
+            rgba(228, 243, 107, 0.3),
+            transparent 45%
+          ),
+          var(--doc-bg);
+        font-family: var(--font-sans);
+        font-weight: var(--type-body-lg-weight);
+        color: var(--doc-text);
+      }
+
+      strong {
+        font-weight: 300;
+      }
+
+      [data-theme="dark"] {
+        --doc-bg: #0f1514;
+        --doc-surface: #141c1b;
+        --doc-surface-muted: #1b2523;
+        --doc-border: rgba(255, 255, 255, 0.08);
+        --doc-text: #f2f5f2;
+        --doc-text-muted: #b5c2bc;
+        --doc-code-bg: #0b1110;
+        --doc-code-border: rgba(255, 255, 255, 0.1);
+        --doc-highlight: #a5eede;
+        --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.35);
+        --shadow-mid: 0 12px 30px rgba(0, 0, 0, 0.4);
+        --shadow-inset: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+      }
+
+      a,
+      button {
+        transition: color var(--motion-fast) ease, background var(--motion-fast) ease,
+          border-color var(--motion-fast) ease, transform var(--motion-fast) ease,
+          box-shadow var(--motion-fast) ease;
+      }
+
+      a:hover,
+      button:hover {
+        color: var(--color-primary-900);
+      }
+
+      .type-display-lg {
+        font-family: var(--font-display);
+        font-size: var(--type-display-01-size);
+        line-height: var(--type-display-01-line);
+        letter-spacing: var(--type-display-lg-letter);
+        font-weight: var(--type-display-01-weight);
+      }
+
+      .type-display-md {
+        font-family: var(--font-display);
+        font-size: var(--type-display-02-size);
+        line-height: var(--type-display-02-line);
+        letter-spacing: var(--type-display-md-letter);
+        font-weight: var(--type-display-02-weight);
+      }
+
+      .type-heading-lg {
+        font-family: var(--font-display);
+        font-size: var(--type-heading-01-size);
+        line-height: var(--type-heading-01-line);
+        letter-spacing: var(--type-heading-lg-letter);
+        font-weight: var(--type-heading-01-weight);
+      }
+
+      .type-heading-md {
+        font-family: var(--font-display);
+        font-size: var(--type-heading-02-size);
+        line-height: var(--type-heading-02-line);
+        letter-spacing: var(--type-heading-md-letter);
+        font-weight: var(--type-heading-02-weight);
+      }
+
+      .type-heading-sm {
+        font-family: var(--font-display);
+        font-size: var(--type-heading-03-size);
+        line-height: var(--type-heading-03-line);
+        letter-spacing: var(--type-heading-sm-letter);
+        font-weight: var(--type-heading-03-weight);
+      }
+
+      .type-body-lg {
+        font-family: var(--font-sans);
+        font-size: var(--type-body-01-size);
+        line-height: var(--type-body-01-line);
+        letter-spacing: var(--type-body-lg-letter);
+        font-weight: var(--type-body-01-weight);
+      }
+
+      .type-body-md {
+        font-family: var(--font-sans);
+        font-size: var(--type-body-02-size);
+        line-height: var(--type-body-02-line);
+        letter-spacing: var(--type-body-md-letter);
+        font-weight: var(--type-body-02-weight);
+      }
+
+      .type-body-sm {
+        font-family: var(--font-sans);
+        font-size: var(--type-body-03-size);
+        line-height: var(--type-body-03-line);
+        letter-spacing: var(--type-body-sm-letter);
+        font-weight: var(--type-body-03-weight);
+      }
+
+      .type-caption {
+        font-family: var(--font-sans);
+        font-size: var(--type-caption-01-size);
+        line-height: var(--type-caption-01-line);
+        letter-spacing: var(--type-caption-letter);
+        font-weight: var(--type-caption-01-weight);
+      }
+
+      .type-footer {
+        font-family: var(--font-sans);
+        font-size: var(--type-body-01-size);
+        line-height: var(--type-body-01-line);
+        letter-spacing: var(--type-footer-letter);
+        font-weight: var(--type-body-01-weight);
+      }
+
+      .site-header {
+        margin: var(--space-4) auto;
+      }
+
+      .container {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 var(--space-3);
+      }
+
+      .page-hero {
+        margin: var(--space-6) 0 var(--space-5);
+        display: grid;
+        gap: var(--space-2);
+        max-width: 820px;
+      }
+
+      .page-hero .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+        font-size: 12px;
+        color: var(--doc-text-muted);
+      }
+
+      .page-hero p {
+        margin: 0;
+        max-width: 720px;
+        color: var(--doc-text-muted);
+      }
+
+      .layout-shell {
+        display: grid;
+        grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+        gap: var(--space-4);
+        align-items: start;
+      }
+
+      .toc-sidebar {
+        position: sticky;
+        top: var(--space-4);
+        align-self: start;
+        border-radius: var(--radius-lg);
+        padding: var(--space-3);
+        background: var(--doc-surface);
+        border: 1px solid var(--doc-border);
+        box-shadow: var(--shadow-inset);
+      }
+
+      .toc-sidebar .toc {
+        grid-template-columns: 1fr;
+      }
+
+      .toc-title {
+        margin: 0 0 var(--space-2);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: var(--doc-text-muted);
+      }
+
+      .toc {
+        display: grid;
+        gap: var(--space-1);
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        margin-top: var(--space-2);
+      }
+
+      .toc a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-1);
+        padding: var(--space-1) var(--space-2);
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--doc-border);
+        color: var(--doc-text);
+        text-decoration: none;
+        background: var(--doc-surface);
+      }
+
+      .toc a:hover {
+        border-color: var(--color-primary-700);
+        color: var(--color-primary-700);
+      }
+
+      .section-block {
+        margin: var(--space-6) 0;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        margin-bottom: var(--space-3);
+      }
+
+      .section-intro {
+        margin: 0 0 var(--space-3);
+        color: var(--doc-text-muted);
+        max-width: 760px;
+      }
+
+      .section-title span {
+        display: inline-flex;
+        padding: var(--space-0-5) var(--space-2);
+        border-radius: var(--radius-pill);
+        background: var(--doc-highlight);
+        color: var(--doc-text);
+        font-weight: 300;
+      }
+
+      .header-bar {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        padding: var(--space-2) var(--space-3);
+        background: var(--doc-surface);
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--doc-border);
+        box-shadow: var(--shadow-inset);
+      }
+
+      .logo {
+        text-decoration: none;
+        color: var(--doc-text);
+        font-family: var(--font-display);
+        letter-spacing: 0.2px;
+      }
+
+      .main-nav {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        gap: var(--space-3);
+        white-space: nowrap;
+      }
+
+      .nav-item {
+        all: unset;
+        cursor: pointer;
+        position: relative;
+        padding: var(--space-0-5) var(--space-2) var(--space-2);
+        color: var(--doc-text-muted);
+      }
+
+      .nav-item.active {
+        color: var(--doc-text);
+      }
+
+      .nav-item::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: var(--color-accent-lime-500);
+        transform: translateX(-50%);
+        transition: width 0.18s ease;
+      }
+
+      .nav-item.active::after {
+        width: 100%;
+      }
+
+      .actions {
+        display: flex;
+      }
+
+      .primary-button {
+        padding: var(--space-1) var(--space-3);
+        border-radius: var(--radius-pill);
+        background: var(--color-primary-900);
+        color: var(--doc-highlight);
+        text-decoration: none;
+        transition: transform var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
+      }
+
+      .primary-button:hover {
+        transform: translateY(-1px);
+        background: var(--color-primary-700);
+        color: var(--doc-highlight);
+      }
+
+      .theme-toggle {
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface-muted);
+        color: var(--doc-text);
+        padding: 6px 12px;
+        border-radius: var(--radius-pill);
+        font-family: var(--font-sans);
+        font-size: 12px;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      .submenu-layer {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        pointer-events: none;
+      }
+
+      .submenu-panel {
+        position: relative;
+        top: var(--space-2);
+        width: 520px;
+        background: var(--doc-surface);
+        border-radius: var(--radius-lg);
+        padding: var(--space-3);
+        border: 1px solid var(--doc-border);
+        opacity: 0;
+        transform: translateY(var(--space-2));
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        pointer-events: none;
+      }
+
+      .submenu-panel.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .submenu-content {
+        display: none;
+      }
+
+      .submenu-content.active {
+        display: block;
+      }
+
+      .submenu-content h2 {
+        margin: 0 0 var(--space-1);
+      }
+
+      .submenu-content p {
+        margin: 0;
+        color: var(--doc-text-muted);
+      }
+
+      .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .mobile-drawer {
+        position: fixed;
+        inset: 0;
+        background: var(--doc-bg);
+        z-index: 200;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+      }
+
+      .mobile-drawer.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-drawer-inner {
+        max-width: 420px;
+        margin: 0 auto;
+        padding: var(--space-4) var(--space-3) var(--space-5);
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .mobile-close {
+        align-self: flex-end;
+        background: var(--doc-surface);
+        border: 1px solid var(--doc-border);
+        border-radius: var(--radius-sm);
+        padding: var(--space-0-5) var(--space-1);
+      }
+
+      .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        margin-top: var(--space-5);
+      }
+
+      .mobile-item {
+        all: unset;
+        font-family: var(--font-sans);
+        font-weight: 300;
+        color: var(--doc-text);
+        cursor: pointer;
+      }
+
+      .mobile-primary-cta {
+        margin-top: auto;
+        padding: var(--space-2);
+        border-radius: var(--radius-pill);
+        background: var(--color-primary-900);
+        color: var(--doc-highlight);
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .type-spec {
+        margin: var(--space-6) 0;
+      }
+
+      .type-spec-list {
+        display: grid;
+        gap: var(--space-2);
+        margin-top: var(--space-3);
+      }
+
+      .type-spec-item {
+        padding: var(--space-2);
+        border: 1px solid var(--doc-border);
+        border-radius: var(--radius-md);
+        background: var(--doc-surface);
+      }
+
+      .color-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .color-swatch {
+        border-radius: var(--radius-md);
+        padding: var(--space-2);
+        border: 1px solid var(--doc-border);
+        box-shadow: var(--shadow-inset);
+        display: grid;
+        gap: var(--space-0-5);
+        background: var(--doc-surface);
+      }
+
+      .color-chip {
+        height: 72px;
+        border-radius: var(--radius-sm);
+      }
+
+      .component-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--space-3);
+      }
+
+      .card {
+        background: var(--doc-surface);
+        border-radius: var(--radius-lg);
+        padding: var(--space-3);
+        border: 1px solid var(--doc-border);
+        box-shadow: var(--shadow-01);
+        display: grid;
+        gap: var(--space-2);
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-0-5);
+        padding: var(--space-0-5) var(--space-2);
+        border-radius: var(--radius-pill);
+        background: rgba(4, 153, 139, 0.12);
+        color: var(--doc-text);
+        font-weight: 300;
+        box-shadow: none;
+      }
+
+      .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+      }
+
+      .btn {
+        border-radius: var(--radius-pill);
+        border: 1px solid transparent;
+        padding: var(--space-1) var(--space-3);
+        font-family: var(--font-sans);
+        cursor: pointer;
+        transition: transform var(--motion-fast) ease, box-shadow var(--motion-fast) ease,
+          background var(--motion-fast) ease, color var(--motion-fast) ease;
+        box-shadow: none;
+      }
+
+      .btn-primary {
+        background: var(--color-primary-900);
+        color: var(--color-accent-mint-300);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        background: var(--color-primary-700);
+        color: var(--color-accent-mint-300);
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--doc-text);
+        border-color: var(--doc-border);
+      }
+
+      .btn-ghost:hover {
+        background: rgba(0, 41, 42, 0.05);
+      }
+
+      .btn-accent {
+        background: var(--color-accent-lime-500);
+        color: var(--color-primary-900);
+      }
+
+      .form-field {
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .input,
+      .select,
+      .textarea {
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--doc-border);
+        padding: var(--space-1) var(--space-2);
+        font-family: var(--font-sans);
+        background: var(--doc-surface);
+        color: var(--doc-text);
+        box-shadow: var(--shadow-inset);
+      }
+
+      .textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .metric {
+        padding: var(--space-2);
+        border-radius: var(--radius-md);
+        background: var(--doc-surface-muted);
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 28px;
+        font-family: var(--font-display);
+      }
+
+      .motion-demo {
+        display: grid;
+        gap: var(--space-2);
+      }
+
+      .motion-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-1);
+        border-radius: var(--radius-pill);
+        padding: var(--space-1) var(--space-2);
+        background: rgba(0, 41, 42, 0.08);
+        width: fit-content;
+        animation: float-in var(--motion-slow) ease both;
+      }
+
+      .token-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .token-card {
+        border-radius: var(--radius-md);
+        padding: var(--space-2);
+        background: var(--doc-surface);
+        border: 1px solid var(--doc-border);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .token-sample {
+        height: 56px;
+        border-radius: var(--radius-sm);
+        background: var(--doc-surface-muted);
+        display: grid;
+        place-items: center;
+      }
+
+      .token-label {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--space-1);
+        color: var(--doc-text-muted);
+      }
+
+      .type-detail {
+        display: grid;
+        gap: var(--space-3);
+      }
+
+      .type-card {
+        background: var(--doc-surface);
+        border-radius: var(--radius-lg);
+        padding: var(--space-3);
+        border: 1px solid var(--doc-border);
+        display: grid;
+        gap: var(--space-2);
+      }
+
+      .type-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: var(--type-body-sm-size);
+      }
+
+      .type-table th,
+      .type-table td {
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--doc-border);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .type-table th {
+        font-weight: 300;
+        color: var(--doc-text-muted);
+      }
+
+      .type-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .type-usage {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .type-sample {
+        border-radius: var(--radius-md);
+        padding: var(--space-2);
+        background: var(--doc-surface-muted);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .type-color-swatches {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .type-color {
+        border-radius: var(--radius-md);
+        padding: var(--space-2);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface);
+      }
+
+      .type-rule {
+        display: grid;
+        gap: var(--space-0-5);
+        color: var(--doc-text-muted);
+      }
+
+      .type-token-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .type-token-card {
+        border-radius: var(--radius-md);
+        padding: var(--space-2);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface-muted);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .type-token-label {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--space-1);
+        color: var(--doc-text-muted);
+      }
+
+      .emphasis-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-0-5);
+        padding: 2px var(--space-1);
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface-muted);
+      }
+
+      .type-guides {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .type-guide-card {
+        border-radius: var(--radius-md);
+        padding: var(--space-2);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .type-emphasis {
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+
+      .type-roles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .role-card {
+        border-radius: var(--radius-md);
+        padding: var(--space-2);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .type-apply-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .apply-card {
+        border-radius: var(--radius-md);
+        padding: var(--space-2);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface-muted);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .type-spec-list .type-spec-item {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) max-content;
+        align-items: start;
+        gap: var(--space-2);
+      }
+
+      .type-spec-item code {
+        font-family: var(--font-sans);
+        font-size: 12px;
+        color: var(--doc-text-muted);
+        line-height: 1.4;
+        word-break: break-word;
+        justify-self: end;
+        max-width: 100%;
+        text-align: right;
+        background: transparent;
+        border: 0;
+        padding: 0;
+        border-radius: 0;
+        display: inline;
+      }
+
+      .type-metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .metric-card {
+        border-radius: var(--radius-md);
+        padding: var(--space-2);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .mono-nums {
+        font-variant-numeric: tabular-nums;
+      }
+
+      .type-link {
+        color: var(--color-accent-teal-500);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+
+      .type-link:hover {
+        color: var(--color-primary-700);
+      }
+
+      .type-detail strong {
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--doc-text);
+      }
+
+      .text-heading-72 {
+        font-size: 72px;
+        line-height: 80px;
+        letter-spacing: -2.16px;
+        font-weight: 300;
+      }
+
+      .text-heading-64 {
+        font-size: 64px;
+        line-height: 72px;
+        letter-spacing: -1.6px;
+        font-weight: 300;
+      }
+
+      .text-heading-56 {
+        font-size: 56px;
+        line-height: 64px;
+        letter-spacing: -1.4px;
+        font-weight: 300;
+      }
+
+      .text-heading-48 {
+        font-size: 48px;
+        line-height: 56px;
+        letter-spacing: -1.2px;
+        font-weight: 300;
+      }
+
+      .text-heading-40 {
+        font-size: 40px;
+        line-height: 48px;
+        letter-spacing: -1px;
+        font-weight: 300;
+      }
+
+      .text-heading-32 {
+        font-size: 32px;
+        line-height: 40px;
+        letter-spacing: -0.8px;
+        font-weight: 300;
+      }
+
+      .text-heading-24 {
+        font-size: 24px;
+        line-height: 32px;
+        letter-spacing: -0.6px;
+        font-weight: 300;
+      }
+
+      .text-heading-20 {
+        font-size: 20px;
+        line-height: 28px;
+        letter-spacing: -0.4px;
+        font-weight: 300;
+      }
+
+      .text-heading-16 {
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.2px;
+        font-weight: 300;
+      }
+
+      .text-heading-14 {
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: -0.1px;
+        font-weight: 300;
+      }
+
+      .text-button-16 {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 300;
+      }
+
+      .text-button-14 {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 300;
+      }
+
+      .text-button-12 {
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 300;
+      }
+
+      .text-label-20 {
+        font-size: 20px;
+        line-height: 28px;
+        font-weight: 300;
+      }
+
+      .text-label-18 {
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 300;
+      }
+
+      .text-label-16 {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 300;
+      }
+
+      .text-label-14 {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 300;
+      }
+
+      .text-label-13 {
+        font-size: 13px;
+        line-height: 18px;
+        font-weight: 300;
+      }
+
+      .text-label-12 {
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 300;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+      }
+
+      .text-copy-24 {
+        font-size: 24px;
+        line-height: 34px;
+        font-weight: 300;
+      }
+
+      .text-copy-20 {
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 300;
+      }
+
+      .text-copy-18 {
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 300;
+      }
+
+      .text-copy-16 {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 300;
+      }
+
+      .text-copy-14 {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 300;
+      }
+
+      .text-copy-13 {
+        font-size: 13px;
+        line-height: 18px;
+        font-weight: 300;
+      }
+
+      .text-mono {
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.2px;
+      }
+      .type-subset-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .subset-card {
+        border-radius: var(--radius-md);
+        padding: var(--space-2);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .scale-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: var(--type-body-sm-size);
+      }
+
+      .scale-table th,
+      .scale-table td {
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--doc-border);
+        text-align: left;
+      }
+
+      .color-detail {
+        display: grid;
+        gap: var(--space-3);
+      }
+
+      .color-card {
+        background: var(--doc-surface);
+        border-radius: var(--radius-lg);
+        padding: var(--space-3);
+        border: 1px solid var(--doc-border);
+        display: grid;
+        gap: var(--space-2);
+      }
+
+      .color-family-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .color-family {
+        border-radius: var(--radius-md);
+        padding: var(--space-2);
+        background: var(--doc-surface-muted);
+        border: 1px solid var(--doc-border);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .swatch-row {
+        display: flex;
+        gap: var(--space-1);
+        flex-wrap: wrap;
+      }
+
+      .swatch-pill {
+        flex: 1;
+        height: 34px;
+        border-radius: var(--radius-pill);
+      }
+
+      .swatch-stack {
+        flex: 1;
+        min-width: 90px;
+        display: grid;
+        gap: 6px;
+        justify-items: stretch;
+      }
+
+      .swatch-hex {
+        font-size: 11px;
+        color: var(--doc-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        text-align: center;
+      }
+
+      .color-scale {
+        display: grid;
+        gap: var(--space-2);
+      }
+
+      .scale-row {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: var(--space-2);
+        align-items: center;
+      }
+
+      .scale-title {
+        font-size: 12px;
+        color: var(--doc-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+      }
+
+      .scale-bar {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: var(--space-1);
+      }
+
+      .scale-item {
+        display: grid;
+        gap: 6px;
+        align-items: center;
+        justify-items: stretch;
+      }
+
+      .scale-chip {
+        height: 28px;
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--doc-border);
+      }
+
+      .scale-hex {
+        font-size: 11px;
+        color: var(--doc-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        text-align: center;
+      }
+
+      .gradient-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .gradient-strip {
+        height: 70px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--doc-border);
+      }
+
+      .color-usage-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .usage-card {
+        border-radius: var(--radius-md);
+        padding: var(--space-2);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .contrast-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .contrast-sample {
+        border-radius: var(--radius-md);
+        padding: var(--space-2);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .grid-demo {
+        border-radius: var(--radius-md);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface);
+        padding: var(--space-2);
+        display: grid;
+        gap: var(--space-2);
+      }
+
+      .grid-demo-row {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: var(--space-2);
+      }
+
+      .grid-demo-row.tablet {
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+      }
+
+      .grid-demo-row.mobile {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .grid-cell {
+        height: 48px;
+        border-radius: var(--radius-sm);
+        background: var(--doc-surface-muted);
+        border: 1px dashed var(--doc-border);
+      }
+
+      .spacing-demo {
+        display: grid;
+        gap: var(--space-2);
+      }
+
+      .spacing-item {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        align-items: center;
+        gap: var(--space-2);
+      }
+
+      .spacing-bar {
+        height: 12px;
+        border-radius: var(--radius-pill);
+        background: var(--color-accent-lime-500);
+      }
+
+      .sizing-demo {
+        display: grid;
+        gap: var(--space-2);
+      }
+
+      .sizing-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .size-chip {
+        border-radius: var(--radius-md);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface);
+        padding: var(--space-2);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .size-block {
+        border-radius: var(--radius-sm);
+        background: var(--doc-surface-muted);
+        border: 1px solid var(--doc-border);
+      }
+
+      .spacing-visual {
+        display: grid;
+        gap: var(--space-2);
+      }
+
+      .spacing-card {
+        border-radius: var(--radius-md);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface);
+        padding: var(--space-2);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .spacing-strip {
+        height: 12px;
+        border-radius: var(--radius-pill);
+        background: var(--color-accent-lime-500);
+      }
+
+      .spacing-pair {
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .spacing-example {
+        border-radius: var(--radius-md);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface-muted);
+        padding: var(--space-2);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .spacing-row {
+        display: flex;
+        gap: 0;
+        flex-wrap: wrap;
+      }
+
+      .spacing-chip {
+        padding: 6px 12px;
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--doc-border);
+        background: var(--doc-surface);
+      }
+
+      .spacing-box {
+        height: 44px;
+        border-radius: var(--radius-sm);
+        border: 1px dashed var(--doc-border);
+        background: var(--doc-surface);
+      }
+
+      .spacing-row.tight {
+        gap: var(--space-1);
+      }
+
+      .spacing-pair {
+        gap: 0;
+      }
+
+      pre,
+      code {
+        font-family: var(--font-sans);
+        font-size: 12px;
+      }
+
+      pre {
+        background: var(--doc-code-bg);
+        border: 1px solid var(--doc-code-border);
+        padding: var(--space-2);
+        border-radius: var(--radius-md);
+        overflow-x: auto;
+      }
+
+      code {
+        background: var(--doc-code-bg);
+        border: 1px solid var(--doc-code-border);
+        padding: 2px 6px;
+        border-radius: 6px;
+      }
+
+      .motion-pill:nth-child(2) {
+        animation-delay: 120ms;
+      }
+
+      .motion-pill:nth-child(3) {
+        animation-delay: 240ms;
+      }
+
+      @keyframes float-in {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .main-nav,
+        .submenu-layer,
+        .actions {
+          display: none !important;
+        }
+
+        .mobile-toggle {
+          display: block;
+        }
+      }
+
+      @media (max-width: 980px) {
+        .layout-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .toc-sidebar {
+          position: static;
+          order: -1;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .type-spec-list .type-spec-item {
+          grid-template-columns: 1fr;
+        }
+
+        .type-spec-item code {
+          width: 100%;
+          text-align: left;
+          justify-self: start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="header-bar">
+          <a class="logo type-body-md" href="#">Brand</a>
+
+          <nav class="main-nav" aria-label="Main">
+            <button class="nav-item type-body-sm" data-menu="platform">
+              Platform
+            </button>
+            <button class="nav-item type-body-sm" data-menu="solutions">
+              Solutions
+            </button>
+            <button class="nav-item type-body-sm" data-menu="research">
+              Research
+            </button>
+            <button class="nav-item type-body-sm" data-menu="company">
+              Company
+            </button>
+          </nav>
+
+          <div class="actions">
+            <button class="theme-toggle" id="themeToggle" type="button">
+              Theme
+            </button>
+            <a class="primary-button type-body-sm" href="#">Request access</a>
+          </div>
+
+          <button class="mobile-toggle type-body-lg" aria-label="Open menu">
+            ☰
+          </button>
+
+          <div class="submenu-layer">
+            <div class="submenu-panel" id="submenuPanel">
+              <div class="submenu-content" data-content="platform">
+                <h2 class="type-heading-sm">The platform</h2>
+                <p class="type-body-sm">
+                  AI-native workflows designed for clarity and depth.
+                </p>
+              </div>
+
+              <div class="submenu-content" data-content="solutions">
+                <h2 class="type-heading-sm">Solutions</h2>
+                <p class="type-body-sm">
+                  Purpose-built systems for real operational problems.
+                </p>
+              </div>
+
+              <div class="submenu-content" data-content="research">
+                <h2 class="type-heading-sm">Research</h2>
+                <p class="type-body-sm">
+                  Grounded in evaluation, safety, and long-term thinking.
+                </p>
+              </div>
+
+              <div class="submenu-content" data-content="company">
+                <h2 class="type-heading-sm">Company</h2>
+                <p class="type-body-sm">
+                  Building tools with care, restraint, and precision.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section-block">
+        <div class="container">
+          <div class="page-hero">
+            <div class="eyebrow">Zitrone Design System</div>
+            <div class="type-heading-lg">Foundations</div>
+            <p class="type-body-sm">
+              Core rules and tokens that keep the system consistent.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="container layout-shell">
+          <aside class="toc-sidebar">
+            <div class="toc-title">On this page</div>
+            <div class="toc">
+              <a href="#typography">Typography</a>
+              <a href="#color">Color</a>
+              <a href="#grid">Grid</a>
+              <a href="#spacing">Spacing</a>
+              <a href="#sizing">Sizing</a>
+            </div>
+          </aside>
+          <div>
+
+      <section class="type-spec" id="typography">
+        <div class="container">
+          <div class="section-title type-heading-sm">
+            <span>Typography</span>
+            <div class="type-heading-md">Type scale</div>
+          </div>
+          <p class="section-intro type-body-sm">
+            Full character set and pangram, presented as a single specimen.
+          </p>
+          <div class="type-card">
+            <div class="type-display-lg">Sphinx of black quartz, judge my vow.</div>
+            <div class="type-body-md">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ
+              abcdefghijklmnopqrstuvwxyz
+              0123456789
+            </div>
+            <div class="type-body-md">
+              ! ? # % &amp; @ ( ) [ ] { } / \ = + - · , . : ; “ ” ‘ ’
+            </div>
+            <div class="type-body-md">
+              $ € £ ¥ ₿ ¢
+            </div>
+          </div>
+          <div class="type-card">
+            <div class="type-heading-sm">Headings</div>
+            <table class="type-table">
+              <thead>
+                <tr>
+                  <th>Example</th>
+                  <th>Class name</th>
+                  <th>Usage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="text-heading-72">Heading 72</td><td>text-heading-72</td><td>Marketing heroes</td></tr>
+                <tr><td class="text-heading-64">Heading 64</td><td>text-heading-64</td><td>Large campaign headlines</td></tr>
+                <tr><td class="text-heading-56">Heading 56</td><td>text-heading-56</td><td>Feature intros</td></tr>
+                <tr><td class="text-heading-48">Heading 48</td><td>text-heading-48</td><td>Editorial highlights</td></tr>
+                <tr><td class="text-heading-40">Heading 40</td><td>text-heading-40</td><td>Section openers</td></tr>
+                <tr><td class="text-heading-32">Heading 32</td><td>text-heading-32</td><td>Marketing subheadings</td></tr>
+                <tr><td class="text-heading-24">Heading 24</td><td>text-heading-24</td><td>Card headers</td></tr>
+                <tr><td class="text-heading-20">Heading 20</td><td>text-heading-20</td><td>Compact headers</td></tr>
+                <tr><td class="text-heading-16">Heading 16</td><td>text-heading-16</td><td>Small headings</td></tr>
+                <tr><td class="text-heading-14">Heading 14</td><td>text-heading-14</td><td>Dense UI labels</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="type-card">
+            <div class="type-heading-sm">Body, titles, and UI text</div>
+            <table class="type-table">
+              <thead>
+                <tr>
+                  <th>Example</th>
+                  <th>Class name</th>
+                  <th>Usage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="text-label-12">Eyebrow / Overline</td><td>text-label-12</td><td>Section labels</td></tr>
+                <tr><td class="text-label-16">Subtitle</td><td>text-label-16</td><td>Short supporting lines</td></tr>
+                <tr><td class="text-heading-24">Title</td><td>text-heading-24</td><td>Card and module titles</td></tr>
+                <tr><td class="text-copy-24">Copy 24</td><td>text-copy-24</td><td>Hero supporting copy</td></tr>
+                <tr><td class="text-copy-20">Copy 20</td><td>text-copy-20</td><td>Large body copy</td></tr>
+                <tr><td class="text-copy-18">Copy 18</td><td>text-copy-18</td><td>Quotes and highlights</td></tr>
+                <tr><td class="text-copy-16">Body 16</td><td>text-copy-16</td><td>Default reading size</td></tr>
+                <tr><td class="text-copy-14">Body 14</td><td>text-copy-14</td><td>Dense UI text</td></tr>
+                <tr><td class="text-label-14">Caption</td><td>text-label-14</td><td>Metadata and captions</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block" aria-labelledby="typography-guides">
+      <div class="container">
+        <div class="section-title type-heading-sm">
+          <span>Typography</span>
+          <div class="type-heading-md" id="typography-guides">Guidelines & tokens</div>
+        </div>
+        <p class="section-intro type-body-sm">
+          Start with family and scale, then apply tokens by category.
+        </p>
+        <div class="type-detail">
+          <div class="type-card">
+            <div class="type-heading-sm">Foundation</div>
+            <div class="type-body-sm">
+              Manrope Light (300) only. Emphasis comes from size and spacing.
+            </div>
+            <div class="type-rule type-caption">
+              <span>Family: "Manrope", system-ui, sans-serif</span>
+              <span>Weight: 300 only (no bold)</span>
+              <span>Tracking: tighten only for display sizes</span>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Token variables</div>
+            <div class="type-body-sm">
+              Use CSS variables for tokens to keep sizes consistent.
+            </div>
+            <div class="type-rule type-caption">
+              <span>Example: --type-display-01-size / --type-display-01-line</span>
+              <span>Example: --type-body-02-size / --type-body-02-line</span>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Usage</div>
+            <div class="type-body-sm">
+              Typography styles can be consumed as utility classes. To use emphasis,
+              nest a <code>&lt;strong&gt;</code> element inside a text class.
+            </div>
+            <div class="type-rule type-caption">
+              <span>Example:</span>
+            </div>
+            <div class="type-body-sm">
+              <pre>
+&lt;p class="text-copy-16"&gt;Copy 16 &lt;strong&gt;with Strong&lt;/strong&gt;&lt;/p&gt;
+              </pre>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Applying type (roles)</div>
+            <div class="type-body-sm">
+              The type scale maps to five roles. Each role has large, medium, and small
+              sizes. Not every page needs all roles—choose the minimal set that
+              preserves hierarchy.
+            </div>
+            <div class="type-roles">
+              <div class="role-card">
+                <div class="type-body-sm">Display</div>
+                <div class="type-caption">Short, high-impact text for hero moments.</div>
+              </div>
+              <div class="role-card">
+                <div class="type-body-sm">Headline</div>
+                <div class="type-caption">Primary passages or section headers.</div>
+              </div>
+              <div class="role-card">
+                <div class="type-body-sm">Title</div>
+                <div class="type-caption">Secondary sections, card titles.</div>
+              </div>
+              <div class="role-card">
+                <div class="type-body-sm">Body</div>
+                <div class="type-caption">Long-form reading and descriptions.</div>
+              </div>
+              <div class="role-card">
+                <div class="type-body-sm">Label</div>
+                <div class="type-caption">Buttons, captions, small UI text.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Applying type (usage examples)</div>
+            <div class="type-apply-grid">
+              <div class="apply-card">
+                <div class="type-display-md">Display</div>
+                <div class="type-body-sm">Use for one line of emphasis on large screens.</div>
+              </div>
+              <div class="apply-card">
+                <div class="type-heading-lg">Headline</div>
+                <div class="type-body-sm">Use for section headers or feature intros.</div>
+              </div>
+              <div class="apply-card">
+                <div class="type-heading-sm">Title</div>
+                <div class="type-body-sm">Use for cards, lists, and UI groupings.</div>
+              </div>
+              <div class="apply-card">
+                <div class="type-body-lg">
+                  Body text should be calm and readable for longer passages.
+                </div>
+              </div>
+              <div class="apply-card">
+                <div class="type-caption">Label</div>
+                <div class="type-body-sm">Use for buttons, captions, metadata.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Typesetting</div>
+            <div class="type-body-sm">
+              For web, rely on line-height and padding to position text vertically
+              (bounding box method). Keep consistent padding around text blocks and
+              avoid manual baseline adjustments.
+            </div>
+            <div class="type-rule type-caption">
+              <span>Use line-height as the bounding box height.</span>
+              <span>Keep padding equal above and below for vertical centering.</span>
+              <span>Use spacing tokens to set vertical rhythm.</span>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Ensuring readability</div>
+            <div class="type-metrics">
+              <div class="metric-card">
+                <div class="type-body-sm">Line height</div>
+                <div class="type-caption">1.2× for display/headline</div>
+                <div class="type-caption">1.5–1.6× for body/label</div>
+              </div>
+              <div class="metric-card">
+                <div class="type-body-sm">Line length</div>
+                <div class="type-caption">45–75 characters per line</div>
+              </div>
+              <div class="metric-card">
+                <div class="type-body-sm">Tabular numbers</div>
+                <div class="type-caption mono-nums">12:45 · 09:12 · 18:07</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Type scale subsets</div>
+            <div class="type-body-sm">
+              Pick a smaller set of styles per context to keep hierarchy clean.
+            </div>
+            <div class="type-subset-grid">
+              <div class="subset-card">
+                <div class="type-body-sm">Marketing / Editorial</div>
+                <div class="type-caption">Display Large, Display Medium</div>
+                <div class="type-caption">Heading Large, Heading Medium</div>
+                <div class="type-caption">Body Large, Body Medium</div>
+              </div>
+              <div class="subset-card">
+                <div class="type-body-sm">Product / UI</div>
+                <div class="type-caption">Heading Medium, Heading Small</div>
+                <div class="type-caption">Body Medium, Body Small</div>
+                <div class="type-caption">Caption</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Scale table (px / rem)</div>
+            <table class="scale-table">
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>px</th>
+                  <th>rem</th>
+                  <th>Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Display Large</td>
+                  <td>72</td>
+                  <td>4.5rem</td>
+                  <td>Display</td>
+                </tr>
+                <tr>
+                  <td>Display Medium</td>
+                  <td>70</td>
+                  <td>4.375rem</td>
+                  <td>Display</td>
+                </tr>
+                <tr>
+                  <td>Heading Large</td>
+                  <td>36</td>
+                  <td>2.25rem</td>
+                  <td>Headline</td>
+                </tr>
+                <tr>
+                  <td>Heading Medium</td>
+                  <td>32</td>
+                  <td>2rem</td>
+                  <td>Headline</td>
+                </tr>
+                <tr>
+                  <td>Heading Small</td>
+                  <td>24</td>
+                  <td>1.5rem</td>
+                  <td>Title</td>
+                </tr>
+                <tr>
+                  <td>Body Large</td>
+                  <td>20</td>
+                  <td>1.25rem</td>
+                  <td>Body</td>
+                </tr>
+                <tr>
+                  <td>Body Medium</td>
+                  <td>19</td>
+                  <td>1.1875rem</td>
+                  <td>Body</td>
+                </tr>
+                <tr>
+                  <td>Body Small</td>
+                  <td>14</td>
+                  <td>0.875rem</td>
+                  <td>Body</td>
+                </tr>
+                <tr>
+                  <td>Caption</td>
+                  <td>14</td>
+                  <td>0.875rem</td>
+                  <td>Label</td>
+                </tr>
+                <tr>
+                  <td>Footer</td>
+                  <td>20</td>
+                  <td>1.25rem</td>
+                  <td>Label</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Links & accessibility</div>
+            <div class="type-body-sm">
+              Links should be underlined and use accent color. Text contrast must
+              meet WCAG AA: 3:1 for large text, 4.5:1 for small text.
+            </div>
+            <div class="type-rule type-caption">
+              <span>
+                Example link:
+                <a class="type-link" href="#">Zitrone research archive</a>
+              </span>
+              <span>Use accent color for links, not for body copy.</span>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Baseline & emphasis sets</div>
+            <div class="type-body-sm">
+              Baseline styles are the default. Emphasis styles are used for active,
+              selected, or highlighted states. Because the system uses Manrope Light,
+              emphasis is created with spacing, casing, and color rather than weight.
+            </div>
+            <div class="type-token-grid">
+              <div class="type-token-card">
+                <div class="type-body-sm">Baseline example</div>
+                <div class="type-heading-sm">Selected account</div>
+                <div class="type-token-label type-caption">
+                  <span>Token</span><span>type-heading-sm</span>
+                </div>
+                <div class="type-token-label type-caption">
+                  <span>Weight</span><span>300</span>
+                </div>
+                <div class="type-token-label type-caption">
+                  <span>Tracking</span><span>-0.72px</span>
+                </div>
+              </div>
+              <div class="type-token-card">
+                <div class="type-body-sm">Emphasis example</div>
+                <div class="type-heading-sm type-emphasis">Selected account</div>
+                <div class="type-token-label type-caption">
+                  <span>Token</span><span>type-heading-sm + emphasis</span>
+                </div>
+                <div class="type-token-label type-caption">
+                  <span>Tracking</span><span>+0.4px</span>
+                </div>
+                <div class="type-token-label type-caption">
+                  <span>Usage</span><span>Selected, active, or editorial</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Where emphasis can be used</div>
+            <div class="type-guides">
+              <div class="type-guide-card">
+                <div class="emphasis-chip type-caption">Components</div>
+                <div class="type-body-sm">
+                  Use emphasis for active tabs, selected list items, or primary
+                  actions when you need stronger hierarchy.
+                </div>
+              </div>
+              <div class="type-guide-card">
+                <div class="emphasis-chip type-caption">Editorial</div>
+                <div class="type-body-sm">
+                  Use emphasis for pull quotes, hero highlights, or navigation
+                  states when clarity matters.
+                </div>
+              </div>
+              <div class="type-guide-card">
+                <div class="emphasis-chip type-caption">Data</div>
+                <div class="type-body-sm">
+                  Emphasize key metrics with size and spacing rather than bold.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Customization notes</div>
+            <div class="type-rule type-body-sm">
+              <span>Keep type sizes fixed to prevent layout shifts.</span>
+              <span>Adjust line height and tracking to fit new layouts.</span>
+              <span>Use a single typeface for both display and body to stay cohesive.</span>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Type usage</div>
+            <div class="type-usage">
+              <div class="type-sample">
+                <div class="type-display-md">Expressive headline</div>
+                <div class="type-body-sm">
+                  Use displays for editorial or hero moments. Keep line length short.
+                </div>
+              </div>
+              <div class="type-sample">
+                <div class="type-heading-sm">Functional header</div>
+                <div class="type-body-sm">
+                  Use headings with body copy for product or operational content.
+                </div>
+              </div>
+              <div class="type-sample">
+                <div class="type-body-lg">
+                  Body text should stay neutral and calm, with generous spacing.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Type color rules</div>
+            <div class="type-color-swatches">
+              <div class="type-color">
+                <div class="type-body-sm">Primary text</div>
+                <div class="type-rule type-caption">
+                  <span>Use: --color-primary-900</span>
+                  <span>For main reading text</span>
+                </div>
+              </div>
+              <div class="type-color">
+                <div class="type-body-sm">Secondary text</div>
+                <div class="type-rule type-caption">
+                  <span>Use: --color-text-500</span>
+                  <span>For supporting copy</span>
+                </div>
+              </div>
+              <div class="type-color">
+                <div class="type-body-sm">Accent text</div>
+                <div class="type-rule type-caption">
+                  <span>Use: --color-accent-teal-500</span>
+                  <span>For links or highlights only</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Accessibility notes</div>
+            <div class="type-rule type-body-sm">
+              <span>Minimum body size: 14px (prefer 19px+ for long reading).</span>
+              <span>Keep contrast above WCAG AA for body text.</span>
+              <span>Use spacing, not weight, to create hierarchy.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section class="section-block" id="color">
+      <div class="container">
+        <div class="section-title type-heading-sm">
+          <span>Color</span>
+          <div class="type-heading-md">Core Palette</div>
+        </div>
+        <p class="section-intro type-body-sm">
+          Neutrals do the work. Accents are brief and purposeful.
+        </p>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="color-chip" style="background: #00292a;"></div>
+            <div class="type-body-sm">Primary 900</div>
+            <div class="type-caption">#00292A</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-chip" style="background: #0c5068;"></div>
+            <div class="type-body-sm">Primary 600</div>
+            <div class="type-caption">#0C5068</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-chip" style="background: #04998b;"></div>
+            <div class="type-body-sm">Teal 500</div>
+            <div class="type-caption">#04998B</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-chip" style="background: #e4f36b;"></div>
+            <div class="type-body-sm">Lime 500</div>
+            <div class="type-caption">#E4F36B</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-chip" style="background: #a5eede;"></div>
+            <div class="type-body-sm">Mint 300</div>
+            <div class="type-caption">#A5EEDE</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-chip" style="background: #fbf6f3;"></div>
+            <div class="type-body-sm">Neutral 100</div>
+            <div class="type-caption">#FBF6F3</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section class="section-block">
+      <div class="container">
+        <div class="section-title type-heading-sm">
+          <span>Color</span>
+          <div class="type-heading-md">Color system & usage</div>
+        </div>
+        <p class="section-intro type-body-sm">
+          Use families, gradients, and rules to keep color choices predictable.
+        </p>
+        <div class="color-detail">
+          <div class="color-card">
+            <div class="type-heading-sm">Color families</div>
+            <div class="type-body-sm">
+              Deep greens and mineral neutrals form the base. Teal and lime are accents.
+            </div>
+            <div class="color-family-grid">
+              <div class="color-family">
+                <div class="type-body-sm">Primary depth</div>
+                <div class="swatch-row">
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #00292a;"></span>
+                    <span class="swatch-hex">#00292A</span>
+                  </div>
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #063434;"></span>
+                    <span class="swatch-hex">#063434</span>
+                  </div>
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #0c5068;"></span>
+                    <span class="swatch-hex">#0C5068</span>
+                  </div>
+                </div>
+                <div class="type-caption">Primary 900 / 700 / 600</div>
+              </div>
+              <div class="color-family">
+                <div class="type-body-sm">Accents</div>
+                <div class="swatch-row">
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #04998b;"></span>
+                    <span class="swatch-hex">#04998B</span>
+                  </div>
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #e4f36b;"></span>
+                    <span class="swatch-hex">#E4F36B</span>
+                  </div>
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #a5eede;"></span>
+                    <span class="swatch-hex">#A5EEDE</span>
+                  </div>
+                </div>
+                <div class="type-caption">Teal 500 / Lime 500 / Mint 300</div>
+              </div>
+              <div class="color-family">
+                <div class="type-body-sm">Neutrals</div>
+                <div class="swatch-row">
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #fbf6f3;"></span>
+                    <span class="swatch-hex">#FBF6F3</span>
+                  </div>
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #f2f1f1;"></span>
+                    <span class="swatch-hex">#F2F1F1</span>
+                  </div>
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #d2dada;"></span>
+                    <span class="swatch-hex">#D2DADA</span>
+                  </div>
+                </div>
+                <div class="type-caption">Neutral 100 / 200 / 400</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-card">
+            <div class="type-heading-sm">Color scales</div>
+            <div class="type-body-sm">
+              Tints and shades help with hierarchy. Use darker values for structure,
+              lighter values for surfaces and subtle accents.
+            </div>
+            <div class="color-scale">
+              <div class="scale-row">
+                <div class="scale-title">Primary Green</div>
+                <div class="scale-bar">
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#00292a;"></div>
+                    <div class="scale-hex">#00292A</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#063434;"></div>
+                    <div class="scale-hex">#063434</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#0c5068;"></div>
+                    <div class="scale-hex">#0C5068</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#3b6f7b;"></div>
+                    <div class="scale-hex">#3B6F7B</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#9fb7bb;"></div>
+                    <div class="scale-hex">#9FB7BB</div>
+                  </div>
+                </div>
+              </div>
+              <div class="scale-row">
+                <div class="scale-title">Teal</div>
+                <div class="scale-bar">
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#0b6c63;"></div>
+                    <div class="scale-hex">#0B6C63</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#04998b;"></div>
+                    <div class="scale-hex">#04998B</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#3fc3b2;"></div>
+                    <div class="scale-hex">#3FC3B2</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#7fded2;"></div>
+                    <div class="scale-hex">#7FDED2</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#d7f3ee;"></div>
+                    <div class="scale-hex">#D7F3EE</div>
+                  </div>
+                </div>
+              </div>
+              <div class="scale-row">
+                <div class="scale-title">Lime</div>
+                <div class="scale-bar">
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#93b61f;"></div>
+                    <div class="scale-hex">#93B61F</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#e4f36b;"></div>
+                    <div class="scale-hex">#E4F36B</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#eef7a0;"></div>
+                    <div class="scale-hex">#EEF7A0</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#f4f9c5;"></div>
+                    <div class="scale-hex">#F4F9C5</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#fafce8;"></div>
+                    <div class="scale-hex">#FAFCE8</div>
+                  </div>
+                </div>
+              </div>
+              <div class="scale-row">
+                <div class="scale-title">Neutral</div>
+                <div class="scale-bar">
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#d2dada;"></div>
+                    <div class="scale-hex">#D2DADA</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#e8e6d6;"></div>
+                    <div class="scale-hex">#E8E6D6</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#f2f1f1;"></div>
+                    <div class="scale-hex">#F2F1F1</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#fbf6f3;"></div>
+                    <div class="scale-hex">#FBF6F3</div>
+                  </div>
+                  <div class="scale-item">
+                    <div class="scale-chip" style="background:#ffffff;"></div>
+                    <div class="scale-hex">#FFFFFF</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-card">
+            <div class="type-heading-sm">Palette styles</div>
+            <div class="type-body-sm">
+              Primaries structure, neutrals support, accents highlight. Avoid stacking accents.
+            </div>
+            <div class="color-usage-grid">
+              <div class="usage-card">
+                <div class="type-body-sm">Primary surfaces</div>
+                <div class="type-caption">Primary 900 / 700 / 600</div>
+                <div class="swatch-row">
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #00292a;"></span>
+                    <span class="swatch-hex">#00292A</span>
+                  </div>
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #063434;"></span>
+                    <span class="swatch-hex">#063434</span>
+                  </div>
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #0c5068;"></span>
+                    <span class="swatch-hex">#0C5068</span>
+                  </div>
+                </div>
+              </div>
+              <div class="usage-card">
+                <div class="type-body-sm">Neutral surfaces</div>
+                <div class="type-caption">Neutral 100 / 200 / 400</div>
+                <div class="swatch-row">
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #fbf6f3;"></span>
+                    <span class="swatch-hex">#FBF6F3</span>
+                  </div>
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #f2f1f1;"></span>
+                    <span class="swatch-hex">#F2F1F1</span>
+                  </div>
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #d2dada;"></span>
+                    <span class="swatch-hex">#D2DADA</span>
+                  </div>
+                </div>
+              </div>
+              <div class="usage-card">
+                <div class="type-body-sm">Accent highlights</div>
+                <div class="type-caption">Teal 500 / Lime 500 / Mint 300</div>
+                <div class="swatch-row">
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #04998b;"></span>
+                    <span class="swatch-hex">#04998B</span>
+                  </div>
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #e4f36b;"></span>
+                    <span class="swatch-hex">#E4F36B</span>
+                  </div>
+                  <div class="swatch-stack">
+                    <span class="swatch-pill" style="background: #a5eede;"></span>
+                    <span class="swatch-hex">#A5EEDE</span>
+                  </div>
+                </div>
+              </div>
+              <div class="usage-card">
+                <div class="type-body-sm">Text pairing</div>
+                <div class="type-caption">Primary 900 on Neutral 100</div>
+                <div class="type-caption">Mint 300 on Primary 900</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-card">
+            <div class="type-heading-sm">Gradients</div>
+            <div class="type-body-sm">
+              Use only accent-to-accent or accent-to-neutral gradients. Keep it to
+              two colors and avoid mixing primaries.
+            </div>
+            <div class="gradient-grid">
+              <div>
+                <div class="gradient-strip" style="background: linear-gradient(135deg, #04998b, #e4f36b);"></div>
+                <div class="type-caption">Teal 500 → Lime 500</div>
+              </div>
+              <div>
+                <div class="gradient-strip" style="background: linear-gradient(135deg, #e4f36b, #a5eede);"></div>
+                <div class="type-caption">Lime 500 → Mint 300</div>
+              </div>
+              <div>
+                <div class="gradient-strip" style="background: linear-gradient(135deg, #04998b, #a5eede);"></div>
+                <div class="type-caption">Teal 500 → Mint 300</div>
+              </div>
+              <div>
+                <div class="gradient-strip" style="background: linear-gradient(135deg, #04998b, #fbf6f3);"></div>
+                <div class="type-caption">Teal 500 → Neutral 100</div>
+              </div>
+              <div>
+                <div class="gradient-strip" style="background: linear-gradient(135deg, #04998b, #f2f1f1);"></div>
+                <div class="type-caption">Teal 500 → Neutral 200</div>
+              </div>
+              <div>
+                <div class="gradient-strip" style="background: linear-gradient(135deg, #04998b, #d2dada);"></div>
+                <div class="type-caption">Teal 500 → Neutral 400</div>
+              </div>
+              <div>
+                <div class="gradient-strip" style="background: linear-gradient(135deg, #e4f36b, #fbf6f3);"></div>
+                <div class="type-caption">Lime 500 → Neutral 100</div>
+              </div>
+              <div>
+                <div class="gradient-strip" style="background: linear-gradient(135deg, #e4f36b, #f2f1f1);"></div>
+                <div class="type-caption">Lime 500 → Neutral 200</div>
+              </div>
+              <div>
+                <div class="gradient-strip" style="background: linear-gradient(135deg, #e4f36b, #d2dada);"></div>
+                <div class="type-caption">Lime 500 → Neutral 400</div>
+              </div>
+              <div>
+                <div class="gradient-strip" style="background: linear-gradient(135deg, #a5eede, #fbf6f3);"></div>
+                <div class="type-caption">Mint 300 → Neutral 100</div>
+              </div>
+              <div>
+                <div class="gradient-strip" style="background: linear-gradient(135deg, #a5eede, #f2f1f1);"></div>
+                <div class="type-caption">Mint 300 → Neutral 200</div>
+              </div>
+              <div>
+                <div class="gradient-strip" style="background: linear-gradient(135deg, #a5eede, #d2dada);"></div>
+                <div class="type-caption">Mint 300 → Neutral 400</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-card">
+            <div class="type-heading-sm">Color in UI</div>
+            <div class="color-usage-grid">
+              <div class="usage-card">
+                <div class="type-body-sm">Primary actions</div>
+                <div class="type-caption">Background: Primary 900</div>
+                <div class="type-caption">Text: Mint 300</div>
+              </div>
+              <div class="usage-card">
+                <div class="type-body-sm">Secondary actions</div>
+                <div class="type-caption">Background: Neutral 100</div>
+                <div class="type-caption">Border: Primary 900</div>
+              </div>
+              <div class="usage-card">
+                <div class="type-body-sm">Links & highlights</div>
+                <div class="type-caption">Text: Teal 500</div>
+                <div class="type-caption">Hover: Primary 700</div>
+              </div>
+              <div class="usage-card">
+                <div class="type-body-sm">Surfaces</div>
+                <div class="type-caption">Base: Neutral 100</div>
+                <div class="type-caption">Alt: Neutral 200</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-card">
+            <div class="type-heading-sm">Accessibility & contrast</div>
+            <div class="type-body-sm">
+              Ensure text meets WCAG AA. Small text needs 4.5:1 contrast; large text
+              needs 3:1. Check gradients against their lightest stop.
+            </div>
+            <div class="contrast-grid">
+              <div class="contrast-sample">
+                <div class="type-body-sm">Good contrast</div>
+                <div class="type-caption">Primary 900 on Neutral 100</div>
+              </div>
+              <div class="contrast-sample">
+                <div class="type-body-sm">Good contrast</div>
+                <div class="type-caption">Mint 300 on Primary 900</div>
+              </div>
+              <div class="contrast-sample">
+                <div class="type-body-sm">Avoid</div>
+                <div class="type-caption">Lime 500 on Neutral 100</div>
+              </div>
+              <div class="contrast-sample">
+                <div class="type-body-sm">Avoid</div>
+                <div class="type-caption">Teal 500 on Mint 300</div>
+              </div>
+            </div>
+            <div class="type-rule type-caption">
+              <span>Do not rely on color alone to convey meaning.</span>
+              <span>Use icons or labels alongside status colors.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section class="section-block" id="grid">
+      <div class="container">
+        <div class="section-title type-heading-sm">
+          <span>Grid</span>
+          <div class="type-heading-md">Layout & columns</div>
+        </div>
+        <p class="section-intro type-body-sm">
+          12 columns desktop, 8 tablet, 4 mobile. Keep gutters consistent.
+        </p>
+        <div class="type-detail">
+          <div class="type-card">
+            <div class="type-heading-sm">Desktop grid</div>
+            <div class="type-rule type-caption">
+              <span>Columns: 12</span>
+              <span>Gutter: 24px</span>
+              <span>Margins: 32px</span>
+            </div>
+          </div>
+          <div class="type-card">
+            <div class="type-heading-sm">Tablet grid</div>
+            <div class="type-rule type-caption">
+              <span>Columns: 8</span>
+              <span>Gutter: 20px</span>
+              <span>Margins: 24px</span>
+            </div>
+          </div>
+          <div class="type-card">
+            <div class="type-heading-sm">Mobile grid</div>
+            <div class="type-rule type-caption">
+              <span>Columns: 4</span>
+              <span>Gutter: 16px</span>
+              <span>Margins: 16px</span>
+            </div>
+          </div>
+          <div class="type-card">
+            <div class="type-heading-sm">Grid preview</div>
+            <div class="grid-demo">
+              <div class="type-caption">Desktop · 12 columns</div>
+              <div class="grid-demo-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="type-caption">Tablet · 8 columns</div>
+              <div class="grid-demo-row tablet">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="type-caption">Mobile · 4 columns</div>
+              <div class="grid-demo-row mobile">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section class="section-block" id="spacing">
+      <div class="container">
+        <div class="section-title type-heading-sm">
+          <span>Spacing</span>
+          <div class="type-heading-md">8px scale</div>
+        </div>
+        <p class="section-intro type-body-sm">
+          8px base scale with a 4px half-step for tight UI.
+        </p>
+        <div class="type-detail">
+          <div class="type-card">
+            <div class="type-heading-sm">Foundational tokens</div>
+            <div class="type-body-sm">
+              Foundational tokens feed semantic spacing tokens.
+            </div>
+            <table class="type-table">
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>--space-0-5</td><td>4px</td></tr>
+                <tr><td>--space-1</td><td>8px</td></tr>
+                <tr><td>--space-2</td><td>16px</td></tr>
+                <tr><td>--space-3</td><td>24px</td></tr>
+                <tr><td>--space-4</td><td>32px</td></tr>
+                <tr><td>--space-5</td><td>40px</td></tr>
+                <tr><td>--space-6</td><td>48px</td></tr>
+                <tr><td>--space-7</td><td>56px</td></tr>
+                <tr><td>--space-8</td><td>64px</td></tr>
+                <tr><td>--space-9</td><td>72px</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Accessibility scaling</div>
+            <div class="type-body-sm">
+              Spacing scales with accessibility settings.
+            </div>
+            <table class="type-table">
+              <thead>
+                <tr>
+                  <th>100%</th>
+                  <th>85%</th>
+                  <th>130%</th>
+                  <th>155%</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>4px</td><td>3px</td><td>5px</td><td>6px</td></tr>
+                <tr><td>8px</td><td>7px</td><td>10px</td><td>12px</td></tr>
+                <tr><td>16px</td><td>14px</td><td>21px</td><td>25px</td></tr>
+                <tr><td>24px</td><td>20px</td><td>31px</td><td>37px</td></tr>
+                <tr><td>32px</td><td>27px</td><td>42px</td><td>50px</td></tr>
+              </tbody>
+            </table>
+            <div class="type-rule type-caption">
+              <span>Values are rounded to the nearest pixel.</span>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Semantic tokens</div>
+            <div class="type-body-sm">
+              Use semantic tokens in product work.
+            </div>
+            <div class="type-rule type-caption">
+              <span>Use semantic tokens from the design system.</span>
+              <span>Do not use custom or hard-coded values.</span>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Horizontal spacing</div>
+            <div class="type-body-sm">
+              Elements that sit side by side.
+            </div>
+            <table class="type-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Value</th>
+                  <th>Accessibility scaling</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>between-cards</td><td>--space-3 (24px)</td><td>scales with settings</td></tr>
+                <tr><td>between-chips</td><td>--space-1 (8px)</td><td>scales with settings</td></tr>
+                <tr><td>screen-mobile</td><td>--space-3 (24px)</td><td>scales with settings</td></tr>
+                <tr><td>component-default</td><td>--space-2 (16px)</td><td>scales with settings</td></tr>
+              </tbody>
+            </table>
+            <div class="spacing-visual">
+              <div class="spacing-card">
+                <div class="type-caption">Between cards</div>
+                <div class="spacing-row">
+                  <div class="spacing-box" style="width: 120px;"></div>
+                  <div class="spacing-strip" style="width: 24px;"></div>
+                  <div class="spacing-box" style="width: 120px;"></div>
+                </div>
+              </div>
+              <div class="spacing-card">
+                <div class="type-caption">Between chips</div>
+                <div class="spacing-row tight">
+                  <div class="spacing-chip">Chip</div>
+                  <div class="spacing-chip">Chip</div>
+                  <div class="spacing-chip">Chip</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-heading-sm">Vertical spacing</div>
+            <div class="type-body-sm">
+              Separation between content blocks and sections.
+            </div>
+            <table class="type-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Value</th>
+                  <th>Accessibility scaling</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>between-text</td><td>--space-1 (8px)</td><td>scales with settings</td></tr>
+                <tr><td>image-bottom</td><td>--space-1 (8px)</td><td>scales with settings</td></tr>
+                <tr><td>display-text-bottom</td><td>--space-2 (16px)</td><td>scales with settings</td></tr>
+                <tr><td>text-to-component</td><td>--space-2 (16px)</td><td>scales with settings</td></tr>
+                <tr><td>content-to-button</td><td>--space-3 (24px)</td><td>scales with settings</td></tr>
+                <tr><td>between-sections</td><td>--space-4 (32px)</td><td>scales with settings</td></tr>
+                <tr><td>between-options</td><td>0px</td><td>scales with settings</td></tr>
+                <tr><td>component-default</td><td>--space-2 (16px)</td><td>scales with settings</td></tr>
+              </tbody>
+            </table>
+            <div class="spacing-visual">
+              <div class="spacing-card">
+                <div class="type-caption">Text to component</div>
+                <div class="spacing-pair">
+                  <div class="spacing-box"></div>
+                  <div class="spacing-strip" style="width: 16px;"></div>
+                  <div class="spacing-box"></div>
+                </div>
+              </div>
+              <div class="spacing-card">
+                <div class="type-caption">Between sections</div>
+                <div class="spacing-pair">
+                  <div class="spacing-box"></div>
+                  <div class="spacing-strip" style="width: 32px;"></div>
+                  <div class="spacing-box"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section class="section-block" id="sizing">
+      <div class="container">
+        <div class="section-title type-heading-sm">
+          <span>Sizing</span>
+          <div class="type-heading-md">Component sizes</div>
+        </div>
+        <p class="section-intro type-body-sm">
+          Standard sizes for controls and icons.
+        </p>
+        <div class="token-grid">
+          <div class="token-card">
+            <div class="type-body-sm">Control heights</div>
+            <div class="token-label type-caption"><span>32px</span><span>Compact</span></div>
+            <div class="token-label type-caption"><span>40px</span><span>Default</span></div>
+            <div class="token-label type-caption"><span>48px</span><span>Comfortable</span></div>
+            <div class="token-label type-caption"><span>56px</span><span>Large</span></div>
+          </div>
+          <div class="token-card">
+            <div class="type-body-sm">Icon sizes</div>
+            <div class="token-label type-caption"><span>12px</span><span>Tiny</span></div>
+            <div class="token-label type-caption"><span>16px</span><span>Small</span></div>
+            <div class="token-label type-caption"><span>20px</span><span>Medium</span></div>
+            <div class="token-label type-caption"><span>24px</span><span>Large</span></div>
+          </div>
+          <div class="token-card">
+            <div class="type-body-sm">Line length</div>
+            <div class="type-rule type-caption">
+              <span>Body copy: 45–75 characters</span>
+              <span>Headings: 20–40 characters</span>
+              <span>Labels: 12–20 characters</span>
+            </div>
+          </div>
+          <div class="token-card">
+            <div class="type-body-sm">Size preview</div>
+            <div class="sizing-demo">
+              <div class="sizing-row">
+                <div class="size-chip">
+                  <div class="type-caption">Control 32px</div>
+                  <div class="size-block" style="height: 32px;"></div>
+                </div>
+                <div class="size-chip">
+                  <div class="type-caption">Control 40px</div>
+                  <div class="size-block" style="height: 40px;"></div>
+                </div>
+                <div class="size-chip">
+                  <div class="type-caption">Control 48px</div>
+                  <div class="size-block" style="height: 48px;"></div>
+                </div>
+                <div class="size-chip">
+                  <div class="type-caption">Control 56px</div>
+                  <div class="size-block" style="height: 56px;"></div>
+                </div>
+              </div>
+              <div class="sizing-row">
+                <div class="size-chip">
+                  <div class="type-caption">Icon 12px</div>
+                  <div class="size-block" style="height: 12px; width: 12px;"></div>
+                </div>
+                <div class="size-chip">
+                  <div class="type-caption">Icon 16px</div>
+                  <div class="size-block" style="height: 16px; width: 16px;"></div>
+                </div>
+                <div class="size-chip">
+                  <div class="type-caption">Icon 20px</div>
+                  <div class="size-block" style="height: 20px; width: 20px;"></div>
+                </div>
+                <div class="size-chip">
+                  <div class="type-caption">Icon 24px</div>
+                  <div class="size-block" style="height: 24px; width: 24px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+        </div>
+      </section>
+    </main>
+
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="mobile-drawer-inner">
+        <button class="mobile-close type-body-sm" aria-label="Close menu">
+          ✕
+        </button>
+
+        <nav class="mobile-nav" aria-label="Mobile">
+          <button class="mobile-item type-heading-sm">Platform</button>
+          <button class="mobile-item type-heading-sm">Solutions</button>
+          <button class="mobile-item type-heading-sm">Research</button>
+          <button class="mobile-item type-heading-sm">Company</button>
+        </nav>
+
+        <a class="mobile-primary-cta type-body-md" href="#">Request access</a>
+      </div>
+    </div>
+
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("themeToggle");
+      const storedTheme = localStorage.getItem("zitrone-theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      function applyTheme(theme) {
+        if (theme === "dark") {
+          root.setAttribute("data-theme", "dark");
+          themeToggle.textContent = "Light mode";
+        } else {
+          root.removeAttribute("data-theme");
+          themeToggle.textContent = "Dark mode";
+        }
+      }
+
+      applyTheme(storedTheme || (prefersDark ? "dark" : "light"));
+
+      themeToggle.addEventListener("click", () => {
+        const isDark = root.getAttribute("data-theme") === "dark";
+        const next = isDark ? "light" : "dark";
+        localStorage.setItem("zitrone-theme", next);
+        applyTheme(next);
+      });
+
+      const navItems = document.querySelectorAll(".nav-item");
+      const panel = document.getElementById("submenuPanel");
+      const contents = document.querySelectorAll(".submenu-content");
+
+      let closeTimer;
+
+      function openMenu(item) {
+        clearTimeout(closeTimer);
+
+        navItems.forEach((i) => i.classList.remove("active"));
+        item.classList.add("active");
+
+        panel.classList.add("open");
+
+        contents.forEach((c) => c.classList.remove("active"));
+        const target = document.querySelector(
+          `[data-content="${item.dataset.menu}"]`
+        );
+        if (target) {
+          target.classList.add("active");
+        }
+      }
+
+      function closeMenu() {
+        closeTimer = setTimeout(() => {
+          panel.classList.remove("open");
+          navItems.forEach((i) => i.classList.remove("active"));
+        }, 120);
+      }
+
+      navItems.forEach((item) => {
+        item.addEventListener("mouseenter", () => openMenu(item));
+        item.addEventListener("mouseleave", closeMenu);
+        item.addEventListener("focus", () => openMenu(item));
+        item.addEventListener("blur", closeMenu);
+      });
+
+      panel.addEventListener("mouseenter", () => clearTimeout(closeTimer));
+      panel.addEventListener("mouseleave", closeMenu);
+
+      const mobileToggle = document.querySelector(".mobile-toggle");
+      const mobileDrawer = document.getElementById("mobileDrawer");
+      const mobileClose = document.querySelector(".mobile-close");
+
+      mobileToggle.addEventListener("click", () => {
+        mobileDrawer.classList.add("open");
+        mobileDrawer.setAttribute("aria-hidden", "false");
+      });
+
+      mobileClose.addEventListener("click", () => {
+        mobileDrawer.classList.remove("open");
+        mobileDrawer.setAttribute("aria-hidden", "true");
+      });
+    </script>
+  </body>
+</html>

@@ -1,11 +1,590 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Zitrone</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --color-primary-900: #00292a;
+        --color-primary-700: #063434;
+        --color-primary-600: #0c5068;
+        --color-accent-teal-500: #04998b;
+        --color-accent-lime-500: #e4f36b;
+        --color-accent-lime-600: #93b61f;
+        --color-accent-lime-400: #dee883;
+        --color-accent-mint-300: #a5eede;
+        --color-neutral-100: #fbf6f3;
+        --color-neutral-200: #f2f1f1;
+        --color-neutral-300: #e8e6d6;
+        --color-neutral-400: #d2dada;
+        --color-text-600: #6e909c;
+        --color-text-500: #57747e;
+        --color-text-400: #547f8e;
+        --color-text-300: #aca9a9;
+        --color-border-500: #848484;
+        --color-white: #ffffff;
+
+        --space-1: 8px;
+        --space-2: 16px;
+        --space-3: 24px;
+        --space-4: 32px;
+        --space-5: 40px;
+        --space-6: 48px;
+        --space-7: 56px;
+        --space-8: 64px;
+        --space-9: 72px;
+        --space-0-5: 4px;
+
+        --radius-xs: 4px;
+        --radius-sm: 8px;
+        --radius-md: 16px;
+        --radius-lg: 24px;
+        --radius-pill: 9999px;
+
+        --font-sans: "Manrope", system-ui, sans-serif;
+        --font-display: "Manrope", system-ui, sans-serif;
+
+        --shadow-mid: 0 12px 30px rgba(0, 41, 42, 0.18);
+        --shadow-inset: inset 0 0 0 1px rgba(0, 41, 42, 0.08);
+
+        --motion-fast: 140ms;
+        --motion-slow: 420ms;
+
+        --z-base: 0;
+        --z-header: 10;
+        --z-dropdown: 20;
+        --z-overlay: 40;
+
+        --type-display-lg-letter: -2.16px;
+        --type-display-md-letter: -2.1px;
+        --type-heading-lg-letter: -1.08px;
+        --type-heading-md-letter: -0.96px;
+        --type-heading-sm-letter: -0.72px;
+        --type-body-lg-letter: 0;
+        --type-body-md-letter: 0;
+        --type-body-sm-letter: 0;
+        --type-caption-letter: 0;
+        --type-footer-letter: -0.4px;
+
+        --type-display-01-size: 72px;
+        --type-display-01-line: 72px;
+        --type-display-01-weight: 300;
+        --type-display-02-size: 70px;
+        --type-display-02-line: 70px;
+        --type-display-02-weight: 300;
+        --type-display-03-size: 48px;
+        --type-display-03-line: 64px;
+        --type-display-03-weight: 300;
+
+        --type-heading-01-size: 36px;
+        --type-heading-01-line: 54px;
+        --type-heading-01-weight: 300;
+        --type-heading-02-size: 32px;
+        --type-heading-02-line: 48px;
+        --type-heading-02-weight: 300;
+        --type-heading-03-size: 24px;
+        --type-heading-03-line: 36px;
+        --type-heading-03-weight: 300;
+        --type-heading-04-size: 20px;
+        --type-heading-04-line: 32px;
+        --type-heading-04-weight: 300;
+        --type-heading-05-size: 16px;
+        --type-heading-05-line: 24px;
+        --type-heading-05-weight: 300;
+        --type-heading-06-size: 14px;
+        --type-heading-06-line: 20px;
+        --type-heading-06-weight: 300;
+
+        --type-body-01-size: 20px;
+        --type-body-01-line: 32px;
+        --type-body-01-weight: 300;
+        --type-body-02-size: 19px;
+        --type-body-02-line: 30px;
+        --type-body-02-weight: 300;
+        --type-body-03-size: 14px;
+        --type-body-03-line: 22px;
+        --type-body-03-weight: 300;
+
+        --type-ui-01-size: 24px;
+        --type-ui-01-line: 36px;
+        --type-ui-01-weight: 300;
+        --type-caption-01-size: 14px;
+        --type-caption-01-line: 22px;
+        --type-caption-01-weight: 300;
+        --type-code-01-size: 14px;
+        --type-code-01-line: 22px;
+        --type-code-01-weight: 300;
+        --type-code-02-size: 12px;
+        --type-code-02-line: 18px;
+        --type-code-02-weight: 300;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: radial-gradient(
+            circle at 20% 20%,
+            rgba(164, 238, 222, 0.35),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 80% 10%,
+            rgba(228, 243, 107, 0.3),
+            transparent 40%
+          ),
+          var(--color-neutral-100);
+        font-family: var(--font-sans);
+        font-weight: var(--type-body-lg-weight);
+        color: var(--color-primary-900);
+      }
+
+      a,
+      button {
+        transition: color var(--motion-fast) ease, background var(--motion-fast) ease,
+          border-color var(--motion-fast) ease, transform var(--motion-fast) ease,
+          box-shadow var(--motion-fast) ease;
+      }
+
+      a:hover,
+      button:hover {
+        color: var(--color-primary-900);
+      }
+
+      .type-display-lg {
+        font-family: var(--font-display);
+        font-size: var(--type-display-01-size);
+        line-height: var(--type-display-01-line);
+        letter-spacing: var(--type-display-lg-letter);
+        font-weight: var(--type-display-01-weight);
+      }
+
+      .type-display-md {
+        font-family: var(--font-display);
+        font-size: var(--type-display-02-size);
+        line-height: var(--type-display-02-line);
+        letter-spacing: var(--type-display-md-letter);
+        font-weight: var(--type-display-02-weight);
+      }
+
+      .type-heading-lg {
+        font-family: var(--font-display);
+        font-size: var(--type-heading-01-size);
+        line-height: var(--type-heading-01-line);
+        letter-spacing: var(--type-heading-lg-letter);
+        font-weight: var(--type-heading-01-weight);
+      }
+
+      .type-heading-md {
+        font-family: var(--font-display);
+        font-size: var(--type-heading-02-size);
+        line-height: var(--type-heading-02-line);
+        letter-spacing: var(--type-heading-md-letter);
+        font-weight: var(--type-heading-02-weight);
+      }
+
+      .type-heading-sm {
+        font-family: var(--font-display);
+        font-size: var(--type-heading-03-size);
+        line-height: var(--type-heading-03-line);
+        letter-spacing: var(--type-heading-sm-letter);
+        font-weight: var(--type-heading-03-weight);
+      }
+
+      .type-body-lg {
+        font-family: var(--font-sans);
+        font-size: var(--type-body-01-size);
+        line-height: var(--type-body-01-line);
+        letter-spacing: var(--type-body-lg-letter);
+        font-weight: var(--type-body-01-weight);
+      }
+
+      .type-body-md {
+        font-family: var(--font-sans);
+        font-size: var(--type-body-02-size);
+        line-height: var(--type-body-02-line);
+        letter-spacing: var(--type-body-md-letter);
+        font-weight: var(--type-body-02-weight);
+      }
+
+      .type-body-sm {
+        font-family: var(--font-sans);
+        font-size: var(--type-body-03-size);
+        line-height: var(--type-body-03-line);
+        letter-spacing: var(--type-body-sm-letter);
+        font-weight: var(--type-body-03-weight);
+      }
+
+      .type-caption {
+        font-family: var(--font-sans);
+        font-size: var(--type-caption-01-size);
+        line-height: var(--type-caption-01-line);
+        letter-spacing: var(--type-caption-letter);
+        font-weight: var(--type-caption-01-weight);
+      }
+
+      .type-footer {
+        font-family: var(--font-sans);
+        font-size: var(--type-body-01-size);
+        line-height: var(--type-body-01-line);
+        letter-spacing: var(--type-footer-letter);
+        font-weight: var(--type-body-01-weight);
+      }
+
+      .site-header {
+        margin: var(--space-4) auto;
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 var(--space-3);
+      }
+
+
+      .header-bar {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        padding: var(--space-2) var(--space-3);
+        background: var(--color-neutral-100);
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--color-neutral-400);
+        box-shadow: var(--shadow-inset);
+      }
+
+      .logo {
+        text-decoration: none;
+        color: var(--color-primary-900);
+      }
+
+      .main-nav {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        gap: var(--space-3);
+        white-space: nowrap;
+      }
+
+      .nav-item {
+        all: unset;
+        cursor: pointer;
+        position: relative;
+        padding: var(--space-0-5) var(--space-2) var(--space-2);
+        color: var(--color-text-500);
+      }
+
+      .nav-item.active {
+        color: var(--color-primary-900);
+      }
+
+      .nav-item::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: var(--color-accent-lime-500);
+        transform: translateX(-50%);
+        transition: width 0.18s ease;
+      }
+
+      .nav-item.active::after {
+        width: 100%;
+      }
+
+      .actions {
+        display: flex;
+      }
+
+      .primary-button {
+        padding: var(--space-1) var(--space-3);
+        border-radius: var(--radius-pill);
+        background: var(--color-primary-900);
+        color: var(--color-accent-mint-300);
+        text-decoration: none;
+        transition: transform var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
+      }
+
+      .primary-button:hover {
+        transform: translateY(-1px);
+        background: var(--color-primary-700);
+        color: var(--color-accent-mint-300);
+      }
+
+      .submenu-layer {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        pointer-events: none;
+      }
+
+      .submenu-panel {
+        position: relative;
+        top: var(--space-2);
+        width: 520px;
+        background: var(--color-neutral-100);
+        border-radius: var(--radius-lg);
+        padding: var(--space-3);
+        border: 1px solid var(--color-neutral-400);
+        opacity: 0;
+        transform: translateY(var(--space-2));
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        pointer-events: none;
+      }
+
+      .submenu-panel.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .submenu-content {
+        display: none;
+      }
+
+      .submenu-content.active {
+        display: block;
+      }
+
+      .submenu-content h2 {
+        margin: 0 0 var(--space-1);
+      }
+
+      .submenu-content p {
+        margin: 0;
+        color: var(--color-text-500);
+      }
+
+      .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .mobile-drawer {
+        position: fixed;
+        inset: 0;
+        background: var(--color-neutral-100);
+        z-index: 200;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+      }
+
+      .mobile-drawer.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-drawer-inner {
+        max-width: 420px;
+        margin: 0 auto;
+        padding: var(--space-4) var(--space-3) var(--space-5);
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .mobile-close {
+        align-self: flex-end;
+        background: none;
+        border: 1px solid var(--color-neutral-400);
+        border-radius: var(--radius-sm);
+        padding: var(--space-0-5) var(--space-1);
+      }
+
+      .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        margin-top: var(--space-5);
+      }
+
+      .mobile-item {
+        all: unset;
+        font-family: var(--font-sans);
+        font-weight: 300;
+        color: var(--color-primary-900);
+        cursor: pointer;
+      }
+
+      .mobile-primary-cta {
+        margin-top: auto;
+        padding: var(--space-2);
+        border-radius: var(--radius-pill);
+        background: var(--color-primary-900);
+        color: var(--color-accent-mint-300);
+        text-align: center;
+        text-decoration: none;
+      }
+
+
+      @media (max-width: 1024px) {
+        .main-nav,
+        .submenu-layer,
+        .actions {
+          display: none !important;
+        }
+
+        .mobile-toggle {
+          display: block;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello Zitrone 🍋</h1>
-    <p>Your 2026 website is alive.</p>
+    <header class="site-header">
+      <div class="container">
+        <div class="header-bar">
+          <a class="logo type-body-md" href="#">Brand</a>
+
+          <nav class="main-nav" aria-label="Main">
+            <button class="nav-item type-body-sm" data-menu="platform">
+              Platform
+            </button>
+            <button class="nav-item type-body-sm" data-menu="solutions">
+              Solutions
+            </button>
+            <button class="nav-item type-body-sm" data-menu="research">
+              Research
+            </button>
+            <button class="nav-item type-body-sm" data-menu="company">
+              Company
+            </button>
+          </nav>
+
+          <div class="actions">
+            <a class="primary-button type-body-sm" href="#">Request access</a>
+          </div>
+
+          <button class="mobile-toggle type-body-lg" aria-label="Open menu">
+            ☰
+          </button>
+
+          <div class="submenu-layer">
+            <div class="submenu-panel" id="submenuPanel">
+              <div class="submenu-content" data-content="platform">
+                <h2 class="type-heading-sm">The platform</h2>
+                <p class="type-body-sm">
+                  AI-native workflows designed for clarity and depth.
+                </p>
+              </div>
+
+              <div class="submenu-content" data-content="solutions">
+                <h2 class="type-heading-sm">Solutions</h2>
+                <p class="type-body-sm">
+                  Purpose-built systems for real operational problems.
+                </p>
+              </div>
+
+              <div class="submenu-content" data-content="research">
+                <h2 class="type-heading-sm">Research</h2>
+                <p class="type-body-sm">
+                  Grounded in evaluation, safety, and long-term thinking.
+                </p>
+              </div>
+
+              <div class="submenu-content" data-content="company">
+                <h2 class="type-heading-sm">Company</h2>
+                <p class="type-body-sm">
+                  Building tools with care, restraint, and precision.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="mobile-drawer-inner">
+        <button class="mobile-close type-body-sm" aria-label="Close menu">
+          ✕
+        </button>
+
+        <nav class="mobile-nav" aria-label="Mobile">
+          <button class="mobile-item type-heading-sm">Platform</button>
+          <button class="mobile-item type-heading-sm">Solutions</button>
+          <button class="mobile-item type-heading-sm">Research</button>
+          <button class="mobile-item type-heading-sm">Company</button>
+        </nav>
+
+        <a class="mobile-primary-cta type-body-md" href="#">Request access</a>
+      </div>
+    </div>
+
+    <script>
+      const navItems = document.querySelectorAll(".nav-item");
+      const panel = document.getElementById("submenuPanel");
+      const contents = document.querySelectorAll(".submenu-content");
+
+      let closeTimer;
+
+      function openMenu(item) {
+        clearTimeout(closeTimer);
+
+        navItems.forEach((i) => i.classList.remove("active"));
+        item.classList.add("active");
+
+        panel.classList.add("open");
+
+        contents.forEach((c) => c.classList.remove("active"));
+        const target = document.querySelector(
+          `[data-content="${item.dataset.menu}"]`
+        );
+        if (target) {
+          target.classList.add("active");
+        }
+      }
+
+      function closeMenu() {
+        closeTimer = setTimeout(() => {
+          panel.classList.remove("open");
+          navItems.forEach((i) => i.classList.remove("active"));
+        }, 120);
+      }
+
+      navItems.forEach((item) => {
+        item.addEventListener("mouseenter", () => openMenu(item));
+        item.addEventListener("mouseleave", closeMenu);
+        item.addEventListener("focus", () => openMenu(item));
+        item.addEventListener("blur", closeMenu);
+      });
+
+      panel.addEventListener("mouseenter", () => clearTimeout(closeTimer));
+      panel.addEventListener("mouseleave", closeMenu);
+
+      const mobileToggle = document.querySelector(".mobile-toggle");
+      const mobileDrawer = document.getElementById("mobileDrawer");
+      const mobileClose = document.querySelector(".mobile-close");
+
+      mobileToggle.addEventListener("click", () => {
+        mobileDrawer.classList.add("open");
+        mobileDrawer.setAttribute("aria-hidden", "false");
+      });
+
+      mobileClose.addEventListener("click", () => {
+        mobileDrawer.classList.remove("open");
+        mobileDrawer.setAttribute("aria-hidden", "true");
+      });
+    </script>
   </body>
 </html>
