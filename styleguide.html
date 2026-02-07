@@ -211,12 +211,12 @@
         margin: 0;
         background: radial-gradient(
             circle at 20% 10%,
-            rgba(228, 243, 107, 0.3),
+            rgba(251, 246, 243, 0.55),
             transparent 50%
           ),
           radial-gradient(
             circle at 80% 0%,
-            rgba(164, 238, 222, 0.35),
+            rgba(164, 238, 222, 0.25),
             transparent 45%
           ),
           radial-gradient(
@@ -465,10 +465,19 @@
       }
 
       .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-1);
         text-decoration: none;
         color: var(--doc-text);
         font-family: var(--font-display);
         letter-spacing: 0.2px;
+      }
+
+      .logo img {
+        height: 28px;
+        width: auto;
+        display: block;
       }
 
       .main-nav {
@@ -505,6 +514,32 @@
 
       .nav-item.active::after {
         width: 100%;
+      }
+
+      .nav-item::before {
+        content: attr(data-description);
+        position: absolute;
+        left: 50%;
+        top: calc(100% + 10px);
+        transform: translateX(-50%);
+        padding: 6px 10px;
+        border-radius: var(--radius-sm);
+        background: var(--doc-surface);
+        border: 1px solid var(--doc-border);
+        color: var(--doc-text-muted);
+        font-size: 12px;
+        letter-spacing: 0.2px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--motion-fast) ease;
+        box-shadow: var(--shadow-01);
+        z-index: var(--z-dropdown);
+      }
+
+      .nav-item:hover::before,
+      .nav-item:focus-visible::before {
+        opacity: 1;
       }
 
       .actions {
@@ -1627,21 +1662,49 @@
     <header class="site-header">
       <div class="container">
         <div class="header-bar">
-          <a class="logo type-body-md" href="#">Brand</a>
+          <a class="logo type-body-md" href="#">
+            <img
+              src="https://zitrone.com.mx/_next/static/media/logo-zitrone-dark.f0c72840.svg"
+              alt="Zitrone"
+            />
+          </a>
 
           <nav class="main-nav" aria-label="Main">
-            <button class="nav-item type-body-sm" data-menu="platform">
-              Platform
-            </button>
-            <button class="nav-item type-body-sm" data-menu="solutions">
-              Solutions
-            </button>
-            <button class="nav-item type-body-sm" data-menu="research">
-              Research
-            </button>
-            <button class="nav-item type-body-sm" data-menu="company">
-              Company
-            </button>
+            <a
+              class="nav-item type-body-sm"
+              data-description="Typography system and usage rules."
+              href="#typography"
+            >
+              Typography
+            </a>
+            <a
+              class="nav-item type-body-sm"
+              data-description="Primary, accent, and neutral palettes."
+              href="#color"
+            >
+              Color
+            </a>
+            <a
+              class="nav-item type-body-sm"
+              data-description="Grid columns and responsive layout."
+              href="#grid"
+            >
+              Grid
+            </a>
+            <a
+              class="nav-item type-body-sm"
+              data-description="Spacing scale and usage guidance."
+              href="#spacing"
+            >
+              Spacing
+            </a>
+            <a
+              class="nav-item type-body-sm"
+              data-description="Sizing tokens for components."
+              href="#sizing"
+            >
+              Sizing
+            </a>
           </nav>
 
           <div class="actions">
@@ -1655,37 +1718,6 @@
             ☰
           </button>
 
-          <div class="submenu-layer">
-            <div class="submenu-panel" id="submenuPanel">
-              <div class="submenu-content" data-content="platform">
-                <h2 class="type-heading-sm">The platform</h2>
-                <p class="type-body-sm">
-                  AI-native workflows designed for clarity and depth.
-                </p>
-              </div>
-
-              <div class="submenu-content" data-content="solutions">
-                <h2 class="type-heading-sm">Solutions</h2>
-                <p class="type-body-sm">
-                  Purpose-built systems for real operational problems.
-                </p>
-              </div>
-
-              <div class="submenu-content" data-content="research">
-                <h2 class="type-heading-sm">Research</h2>
-                <p class="type-body-sm">
-                  Grounded in evaluation, safety, and long-term thinking.
-                </p>
-              </div>
-
-              <div class="submenu-content" data-content="company">
-                <h2 class="type-heading-sm">Company</h2>
-                <p class="type-body-sm">
-                  Building tools with care, restraint, and precision.
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </header>
@@ -2926,10 +2958,11 @@
         </button>
 
         <nav class="mobile-nav" aria-label="Mobile">
-          <button class="mobile-item type-heading-sm">Platform</button>
-          <button class="mobile-item type-heading-sm">Solutions</button>
-          <button class="mobile-item type-heading-sm">Research</button>
-          <button class="mobile-item type-heading-sm">Company</button>
+          <a class="mobile-item type-heading-sm" href="#typography">Typography</a>
+          <a class="mobile-item type-heading-sm" href="#color">Color</a>
+          <a class="mobile-item type-heading-sm" href="#grid">Grid</a>
+          <a class="mobile-item type-heading-sm" href="#spacing">Spacing</a>
+          <a class="mobile-item type-heading-sm" href="#sizing">Sizing</a>
         </nav>
 
         <a class="mobile-primary-cta type-body-md" href="#">Request access</a>
@@ -2960,46 +2993,6 @@
         localStorage.setItem("zitrone-theme", next);
         applyTheme(next);
       });
-
-      const navItems = document.querySelectorAll(".nav-item");
-      const panel = document.getElementById("submenuPanel");
-      const contents = document.querySelectorAll(".submenu-content");
-
-      let closeTimer;
-
-      function openMenu(item) {
-        clearTimeout(closeTimer);
-
-        navItems.forEach((i) => i.classList.remove("active"));
-        item.classList.add("active");
-
-        panel.classList.add("open");
-
-        contents.forEach((c) => c.classList.remove("active"));
-        const target = document.querySelector(
-          `[data-content="${item.dataset.menu}"]`
-        );
-        if (target) {
-          target.classList.add("active");
-        }
-      }
-
-      function closeMenu() {
-        closeTimer = setTimeout(() => {
-          panel.classList.remove("open");
-          navItems.forEach((i) => i.classList.remove("active"));
-        }, 120);
-      }
-
-      navItems.forEach((item) => {
-        item.addEventListener("mouseenter", () => openMenu(item));
-        item.addEventListener("mouseleave", closeMenu);
-        item.addEventListener("focus", () => openMenu(item));
-        item.addEventListener("blur", closeMenu);
-      });
-
-      panel.addEventListener("mouseenter", () => clearTimeout(closeTimer));
-      panel.addEventListener("mouseleave", closeMenu);
 
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileDrawer = document.getElementById("mobileDrawer");
